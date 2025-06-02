@@ -1,12 +1,12 @@
-<!-- Unit 13 Project
+ <!-- Unit 13 Project
 Requirements
-[  ] Two Interactive Drop-down Inputs 
-[  ] Two Different jQuery Animation Methods 
-[  ] Add Five CSS Declarations
-[  ] Include Three Images
+[yes] Two Interactive Drop-down Inputs 
+[  yes] Two Different jQuery Animation Methods 
+[yes  ] Add Five CSS Declarations
+[ yes ] Include Three Images
 
 Select ONE Additional Feature to Add  
-[ no ] Feature 1 - Google Font
+[ yes ] Feature 1 - Google Font
 [ no ] Feature 2 - Upload a Font
 [ no ] Feature 3 - .mouseover() Method
 [ no ] Feature 4 - :hover Feature 
@@ -16,6 +16,9 @@ Select ONE Additional Feature to Add
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barriecito&family=Oi&display=swap" rel="stylesheet">
     <meta charset="utf-8" />
     <title>Unit 13 Project</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
@@ -30,28 +33,38 @@ Select ONE Additional Feature to Add
         <select id="movie-answer">
           <option value="movie1">movie 1</option>
           <option value="movie2">movie 2</option>
-          <option value="movie3">movie 3</option>
-          <option value="movie4">movie 4</option>
+          <option value="none">neither</option>
         </select>
       </label>
       <button type="submit">Check Movie Answer</button>
     </form>
-    <div id="movie-result"></div>
+    <div id="movie-result">
+    
+      <img  class="movie-pic" src="https://cdn.glitch.global/e26ddc9d-1c2b-49bb-8d03-35d9fb20b578/p_ratatouille_19736_0814231f.jpeg?v=1748544603194" width="100">
+      
+      <img  class="movie-pic" src="https://cdn.glitch.global/e26ddc9d-1c2b-49bb-8d03-35d9fb20b578/Unknown.jpeg?v=1748544642830" width="100">
+    
+    </div>
     <hr />
     <!-- Book Question -->
-    <form id="book-form">
+    <form id="shoe-form">
       <label>
-        📖 What is my favorite book?
-        <select id="book-answer">
-          <option value="book1">book 1</option>
-          <option value="book2">book 2</option>
-          <option value="book3">book 3</option>
-          <option value="book4">book 4</option>
+        📖 What is my favorite sneaker?
+        <select id="shoe-answer">
+          <option value="shoe1">shoe 1</option>
+          <option value="shoe2">shoe 2</option>
+          <option value="neither">neither</option>
         </select>
       </label>
-      <button type="submit">Check Book Answer</button>
+      <button type="submit">Check Shoe Answer</button>
     </form>
-    <div id="book-result"></div>
+    <div id="shoe-result">
+    
+    <img class="shoe-pic" src="https://cdn.glitch.global/e26ddc9d-1c2b-49bb-8d03-35d9fb20b578/louis-vuitton-lv-skate-sneaker--BS9U8PGC17_PM2_Front%20view.jpg.webp?v=1748629593078" width="150">
+      
+      <img  class="shoe-pic" src="https://cdn.glitch.global/e26ddc9d-1c2b-49bb-8d03-35d9fb20b578/FW-SKDK02-DRAT-A24761_2_2000x.jpg.webp?v=1748629731231" width="100">
+    
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
       //Movie Question jQuery Code
@@ -63,24 +76,47 @@ Select ONE Additional Feature to Add
 
         if (answer === "movie1") {
           $("#movie-result").text("YESSSS!");
-        } else {
-          $("#movie-result").text("Try Again!");
+        } 
+        
+        if (answer === "movie2") {
+          $("#movie-result").text("Try Again!")
         }
+        
+        if (answer === "none") {
+          $("#movie-result").text("No!")
+        }
+        
       });
 
       //Book Question jQuery Code
-      $("#book-form").on("submit", function (event) {
+      $("#shoe-form").on("submit", function (event) {
         event.preventDefault();
 
-        var $answer = $("#book-answer");
+        var $answer = $("#shoe-answer");
         var answer = $answer.val();
-
-        if (answer === "book1") {
-          $("#book-result").text("YESSSS!");
-        } else {
-          $("#book-result").text("Try Again!");
+        
+        if (answer === "shoe1") {
+          $("#shoe-result").text("Correct!")
         }
+      
+        if (answer === "shoe 2") {
+          $("#shoe-result").text("Try again!")
+        }
+        
+        if (answer === "neither") {
+          $("#shoe-result").text("No!")
+        }
+        
       });
+      
+     $(".movie-pic").hide(1000, function () {
+        $("movie-pic").fadeIn(3000)
+      });
+      
+    $(".shoe-pic").hide(1000, function () {
+      $(".shoe-pic").slideDown(3000)
+    });
+      
     </script>
   </body>
 
